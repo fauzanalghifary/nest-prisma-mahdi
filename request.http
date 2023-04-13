@@ -1,0 +1,21 @@
+### GET
+GET http://localhost:3000/lost-found
+### GET BY ID
+GET http://localhost:3000/lost-found/3
+### POST
+POST http://localhost:3000/lost-found
+Content-Type: application/json
+
+{ "characteristic": "emas", "Status": "ga ada", "location": "parkiran", "dateFound": "12-04-2023", "dateRetrieved": "" }
+### DELETE
+DELETE http://localhost:3000/lost-found/1
+### PUT
+PUT http://localhost:3000/lost-found/1
+Content-Type: application/json
+
+{ "item": "iPhone 11", "characteristic": "warna hitam", "Status": "retrieved", "location": "depan KFC", "dateFound": "13-04-2023", "dateRetrieved": "13-04-2023" }
+### PATCH
+PATCH http://localhost:3000/lost-found/1
+
+Content-Type: application/json
+{ "status": "cincin baru" }
