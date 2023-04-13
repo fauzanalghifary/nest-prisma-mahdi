@@ -1,7 +1,9 @@
+import { PartialType } from "@nestjs/mapped-types";
 import { IsOptional, IsEnum, IsDateString, IsString } from "class-validator";
 import { LostFoundStatus } from "src/enums/lost-found-status.enum";
+import { CreateLostFoundItemDto } from "./create-lost-found.dto";
 
-export class UpdateLostFoundItemDto {
+export class UpdateLostFoundItemDto extends PartialType(CreateLostFoundItemDto) {
   @IsOptional()
   @IsString()
   item?: string;
@@ -22,3 +24,4 @@ export class UpdateLostFoundItemDto {
   @IsDateString()
   dateRetrieved?: Date;
 }
+
