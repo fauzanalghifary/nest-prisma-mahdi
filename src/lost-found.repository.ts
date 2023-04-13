@@ -18,12 +18,14 @@ export class LostFoundRepository {
 
   async findOne(id: number) {
     const data = await this.readJsonFile();
-    const lostFoundItem = data.find(item => item.id === id);
+    const lostFoundItem = data.find(item => item.id === Number(id));
+    console.log(data, lostFoundItem)
     return lostFoundItem;
   }
 
   async save(createLostFoundItemDto: CreateLostFoundItemDto) {
     const data = await this.readJsonFile();
+    console.log(data)
     const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
     const newItem = { id: newId, ...createLostFoundItemDto };
     data.push(newItem);
