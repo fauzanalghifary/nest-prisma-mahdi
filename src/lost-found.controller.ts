@@ -1,14 +1,7 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 import { LostFoundService } from './lost-found.service';
-
-class DataOperationError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'DataOperationError';
-  }
-}
 
 @Controller('lost-found')
 export class LostFoundController {
@@ -19,7 +12,7 @@ export class LostFoundController {
     try {
       return this.lostFoundService.getAllLostFoundItems();
     } catch (error) {
-      throw new DataOperationError('Failed to show data');
+      throw new NotFoundException('Failed to show data')
     }
   }
 
@@ -28,7 +21,7 @@ export class LostFoundController {
     try {
       return this.lostFoundService.getLostFoundItemById(id);
     } catch (error) {
-      throw new DataOperationError('Failed to show data');
+      throw new NotFoundException('Failed to show data');
     }
   }
 
@@ -37,7 +30,7 @@ export class LostFoundController {
     try {
       return this.lostFoundService.createLostFoundItem(createLostFoundItemDto);
     } catch (error) {
-      throw new DataOperationError('Failed to add data');
+      throw new NotFoundException('Failed to add data');
     }
   }
 
@@ -46,7 +39,7 @@ export class LostFoundController {
     try {
       return this.lostFoundService.updateLostFoundItem(id, updateLostFoundItemDto);
     } catch (error) {
-      throw new DataOperationError('Failed to update data');
+      throw new NotFoundException('Failed to update data');
     }
   }
 
@@ -55,7 +48,7 @@ export class LostFoundController {
     try {
       return this.lostFoundService.deleteLostFoundItem(id);
     } catch (error) {
-      throw new DataOperationError('Failed to remove data');
+      throw new NotFoundException('Failed to remove data');
     }
   }
 }
