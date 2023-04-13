@@ -25,40 +25,5 @@
     "location": "parkiran",
     "dateFound": "12-04-2023",
     "dateRetrieved": ""
-  },
-  {
-    "id": 4,
-    "item": "cincin",
-    "characteristic": "emas",
-    "Status": "found",
-    "location": "parkiran",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
-  },
-  {
-    "id": 5,
-    "item": "cincin",
-    "characteristic": "emas",
-    "Status": "ga ada",
-    "location": "parkiran",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
-  },
-  {
-    "id": 6,
-    "item": "",
-    "characteristic": "emas",
-    "Status": "ga ada",
-    "location": "parkiran",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
-  },
-  {
-    "id": 7,
-    "characteristic": "emas",
-    "Status": "ga ada",
-    "location": "parkiran",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
   }
 ]
