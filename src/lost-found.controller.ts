@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Patch, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 import { LostFoundService } from './lost-found.service';
@@ -42,18 +42,6 @@ export class LostFoundController {
       throw new NotFoundException('Failed to update data');
     }
   }
-
-  @Patch(':id')
-  async updatePartialLostFoundItem(
-  @Param('id') id: number,
-  @Body() updateLostFoundItemDto: UpdateLostFoundItemDto,
-) {
-  try {
-    return this.lostFoundService.updatePartialLostFoundItem(id, updateLostFoundItemDto);
-  } catch (error) {
-    throw new NotFoundException('Failed to update data');
-  }
-}
 
   @Delete(':id')
   async deleteLostFoundItem(@Param('id') id: number) {

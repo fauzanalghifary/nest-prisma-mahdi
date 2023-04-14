@@ -23,11 +23,6 @@ export class LostFoundService {
     return this.lostFoundRepository.update(id, updateLostFoundItemDto);
   }
 
-  async updatePartialLostFoundItem(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
-  return this.lostFoundRepository.update(id, updateLostFoundItemDto);
-}
-
-
   async deleteLostFoundItem(id: number) {
     return this.lostFoundRepository.delete(id);
   }

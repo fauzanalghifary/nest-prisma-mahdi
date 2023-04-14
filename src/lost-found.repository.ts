@@ -39,7 +39,7 @@ export class LostFoundRepository {
     if (foundIndex === -1) {
       return null;
     }
-    const updatedItem = { ...data[foundIndex], ...updateLostFoundItemDto };
+    const updatedItem = { id, ...updateLostFoundItemDto };
     data[foundIndex] = updatedItem;
     await this.writeJsonFile(data);
     return updatedItem;

@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "item": "iPhone 12",
-    "characteristic": "warna hitam",
-    "Status": "LOST",
-    "location": "depan KFC",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
+    "item": "iPhone 13 Pro Max",
+    "characteristic": "warna silver",
+    "Status": "lost",
+    "location": "",
+    "dateFound": "20230412",
+    "dateRetrieved": "20230413"
   },
   {
     "id": 2,
@@ -25,5 +25,14 @@
     "location": "parkiran",
     "dateFound": "12-04-2023",
     "dateRetrieved": ""
+  },
+  {
+    "id": 4,
+    "item": "kalung",
+    "characteristics": "emas",
+    "status": "found",
+    "location": "parkiran",
+    "dateFound": "20230412",
+    "dateRetrieved": "20230413"
   }
 ]
