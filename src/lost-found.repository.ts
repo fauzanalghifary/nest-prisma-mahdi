@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
-import { PatchLostFoundItemDto } from './dtos/patch-lost-found.dto';
 import * as fs from 'fs';
 import { promisify } from 'util';
 
@@ -26,7 +25,6 @@ export class LostFoundRepository {
 
   async save(createLostFoundItemDto: CreateLostFoundItemDto) {
     const data = await this.readJsonFile();
-    console.log(data)
     const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
     const newItem = { id: newId, ...createLostFoundItemDto };
     data.push(newItem);
@@ -34,25 +32,25 @@ export class LostFoundRepository {
     return newItem;
   }
 
-  async update(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
-    const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id === id);
-    if (foundIndex === -1) {
-      return null;
-    }
-    const updatedItem = { id, ...updateLostFoundItemDto };
-    data[foundIndex] = updatedItem;
-    await this.writeJsonFile(data);
-    return updatedItem;
-  }
-
-  async patch(id: number, patchLostFoundItemDto: PatchLostFoundItemDto) {
+  async update(id: number, createLostFoundItemDto: CreateLostFoundItemDto) {
     const data = await this.readJsonFile();
     const foundIndex = data.findIndex(item => item.id === Number(id));
     if (foundIndex === -1) {
       return null;
     }
-    const updatedItem = { ...data[foundIndex], ...patchLostFoundItemDto }; // Merge existing item with patch data
+    const updatedItem = { id, ...createLostFoundItemDto };
+    data[foundIndex] = updatedItem;
+    await this.writeJsonFile(data);
+    return updatedItem;
+  }
+
+  async patch(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
+    const data = await this.readJsonFile();
+    const foundIndex = data.findIndex(item => item.id == id);
+    if (foundIndex === -1) {
+      return null;
+    }
+    const updatedItem = { ...data[foundIndex], ...updateLostFoundItemDto };
     data[foundIndex] = updatedItem;
     await this.writeJsonFile(data);
     return updatedItem;
@@ -74,7 +72,9 @@ export class LostFoundRepository {
     return JSON.parse(fileData);
   }
 
-  private async writeJsonFile(data: any) {
-    await writeFileAsync(this.jsonFilePath, JSON.stringify(data, null, 2), 'utf-8');
-  }
+private async writeJsonFile(data: any) {
+  const jsonStr = JSON.stringify(data, null, 2);
+  await writeFileAsync(this.jsonFilePath, jsonStr, 'utf-8');
+}
+
 }

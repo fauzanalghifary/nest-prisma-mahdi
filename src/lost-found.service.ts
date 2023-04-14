@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
-import { PatchLostFoundItemDto } from './dtos/patch-lost-found.dto';
 import { LostFoundRepository } from './lost-found.repository';
 
 @Injectable()
@@ -20,12 +19,12 @@ export class LostFoundService {
     return this.lostFoundRepository.save(createLostFoundItemDto)
   }
 
-    async updateLostFoundItem(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
-    return this.lostFoundRepository.update(id, updateLostFoundItemDto);
+    async updateLostFoundItem(id: number, createLostFoundItemDto: CreateLostFoundItemDto) {
+    return this.lostFoundRepository.update(id, createLostFoundItemDto);
   }
 
-    async patchLostFoundItem(id: number, patchLostFoundItemDto: PatchLostFoundItemDto) {
-    return this.lostFoundRepository.patch(id, patchLostFoundItemDto);
+    async patchLostFoundItem(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
+    return this.lostFoundRepository.patch(id, updateLostFoundItemDto);
   }
 
   async deleteLostFoundItem(id: number) {

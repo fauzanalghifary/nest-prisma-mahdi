@@ -1,21 +1,21 @@
 ### GET
 GET http://localhost:3000/lost-found
 ### GET BY ID
-GET http://localhost:3000/lost-found/2
+GET http://localhost:3000/lost-found/1
 ### POST
 POST http://localhost:3000/lost-found
 Content-Type: application/json
 
-{ "item": "kalung", "characteristics": "emas", "status": "found", "location": "parkiran", "dateFound": "20230412", "dateRetrieved": "20230413" }
+{ "item": "anting", "characteristic": "emas", "status": "found", "location": "parkiran", "dateFound": "20230412", "dateRetrieved": "20230413" }
 ### DELETE
-DELETE http://localhost:3000/lost-found/4
+DELETE http://localhost:3000/lost-found/5
 ### PUT
 PUT http://localhost:3000/lost-found/1
 Content-Type: application/json
 
-{ "item": "iPhone 13 Pro", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "20230412", "dateRetrieved": "20230416" }
+{ "id": 1, "item": "anjing dan babi", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "20230412", "dateRetrieved": "20230416" }
 ### PATCH
 PATCH http://localhost:3000/lost-found/2
 
 Content-Type: application/json
-{ "characteristic": "berkarat" }
+{ "item": "xiaomi 12" }

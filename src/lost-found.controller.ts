@@ -36,18 +36,18 @@ export class LostFoundController {
   }
 
   @Put(':id')
-  async updateLostFoundItem(@Param('id') id: number, @Body() updateLostFoundItemDto: UpdateLostFoundItemDto) {
+  async updateLostFoundItem(@Param('id') id: number, @Body() createLostFoundItemDto: CreateLostFoundItemDto) {
     try {
-      return this.lostFoundService.updateLostFoundItem(id, updateLostFoundItemDto);
+      return this.lostFoundService.updateLostFoundItem(id, createLostFoundItemDto);
     } catch (error) {
       throw new NotFoundException('Failed to update data');
     }
   }
 
     @Patch(':id')
-  async patchLostFoundItem(@Param('id') id: number, @Body() patchLostFoundItemDto: PatchLostFoundItemDto) {
+  async patchLostFoundItem(@Param('id') id: number, @Body() updateLostFoundItemDto: UpdateLostFoundItemDto) {
     try {
-      return this.lostFoundService.patchLostFoundItem(id, patchLostFoundItemDto);
+      return this.lostFoundService.patchLostFoundItem(id, updateLostFoundItemDto);
     } catch (error) {
       throw new NotFoundException('Failed to patch data');
     }

@@ -22,6 +22,7 @@ export class CreateLostFoundItemDto {
   @IsDateString()
   dateFound: Date;
 
+  @IsNotEmpty()
   @IsDateString()
   dateRetrieved?: Date;
 }

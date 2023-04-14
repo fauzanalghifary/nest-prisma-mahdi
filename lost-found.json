@@ -1,7 +1,7 @@
 [
   {
-    "id": "1",
-    "item": "iPhone 13 Pro",
+    "id": 1,
+    "item": "anjing dan babi",
     "characteristic": "warna silver",
     "status": "found",
     "location": "depan masjid",
@@ -10,12 +10,12 @@
   },
   {
     "id": 2,
-    "item": "cincin",
-    "characteristic": "emas",
-    "Status": "found",
-    "location": "parkiran",
-    "dateFound": "12-04-2023",
-    "dateRetrieved": ""
+    "item": "iPhone 13",
+    "characteristic": "warna silver",
+    "status": "found",
+    "location": "depan masjid",
+    "dateFound": 20230412,
+    "dateRetrieved": 20230416
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "Status": "found",
     "location": "parkiran",
     "dateFound": "12-04-2023",
-    "dateRetrieved": ""
+    "dateRetrieved": 0
   },
   {
     "id": 4,
@@ -32,7 +32,16 @@
     "characteristics": "emas",
     "status": "found",
     "location": "parkiran",
-    "dateFound": "20230412",
-    "dateRetrieved": "20230413"
+    "dateFound": 20230412,
+    "dateRetrieved": 20230413
+  },
+  {
+    "id": 5,
+    "item": "anting",
+    "characteristic": "emas",
+    "status": "found",
+    "location": "parkiran",
+    "dateFound": 20230412,
+    "dateRetrieved": 20230413
   }
 ]

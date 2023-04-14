@@ -1,24 +1,24 @@
-import { IsNotEmpty, IsEnum, IsDateString, IsString } from 'class-validator';
+import { IsOptional, IsEnum, IsDateString, IsString, } from 'class-validator';
 import { LostFoundStatus } from 'src/enums/lost-found-status.enum';
 
 export class UpdateLostFoundItemDto {
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   item: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsEnum(LostFoundStatus)
   status: LostFoundStatus;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   location: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsDateString()
   dateFound: Date;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsDateString()
   dateRetrieved: Date;
 }
