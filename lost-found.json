@@ -10,12 +10,12 @@
   },
   {
     "id": 2,
-    "item": "iPhone 13",
+    "item": "babi",
     "characteristic": "warna silver",
     "status": "found",
     "location": "depan masjid",
-    "dateFound": 20230412,
-    "dateRetrieved": 20230416
+    "dateFound": "20230412",
+    "dateRetrieved": "20230416"
   },
   {
     "id": 3,

@@ -38,7 +38,7 @@ export class LostFoundRepository {
     if (foundIndex === -1) {
       return null;
     }
-    const updatedItem = { id, ...createLostFoundItemDto };
+    const updatedItem = { id: Number(id), ...createLostFoundItemDto };
     data[foundIndex] = updatedItem;
     await this.writeJsonFile(data);
     return updatedItem;
@@ -46,11 +46,13 @@ export class LostFoundRepository {
 
   async patch(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
     const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id == id);
+    const foundIndex = data.findIndex(item => item.id === Number(id));
     if (foundIndex === -1) {
       return null;
     }
     const updatedItem = { ...data[foundIndex], ...updateLostFoundItemDto };
+    console.log(updateLostFoundItemDto)
+    console.log(data[foundIndex])
     data[foundIndex] = updatedItem;
     await this.writeJsonFile(data);
     return updatedItem;
