@@ -1,12 +1,12 @@
 [
   {
-    "id": 1,
-    "item": "iPhone 13 Pro Max",
+    "id": "1",
+    "item": "iPhone 13 Pro",
     "characteristic": "warna silver",
-    "Status": "lost",
-    "location": "",
+    "status": "found",
+    "location": "depan masjid",
     "dateFound": "20230412",
-    "dateRetrieved": "20230413"
+    "dateRetrieved": "20230416"
   },
   {
     "id": 2,

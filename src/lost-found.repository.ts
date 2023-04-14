@@ -35,7 +35,7 @@ export class LostFoundRepository {
 
   async update(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
     const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id === Number(id));
+    const foundIndex = data.findIndex(item => item.id === id);
     if (foundIndex === -1) {
       return null;
     }
