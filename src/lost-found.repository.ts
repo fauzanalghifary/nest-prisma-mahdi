@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
+import { PatchLostFoundItemDto } from './dtos/patch-lost-found.dto';
 import * as fs from 'fs';
 import { promisify } from 'util';
 
@@ -40,6 +41,18 @@ export class LostFoundRepository {
       return null;
     }
     const updatedItem = { id, ...updateLostFoundItemDto };
+    data[foundIndex] = updatedItem;
+    await this.writeJsonFile(data);
+    return updatedItem;
+  }
+
+  async patch(id: number, patchLostFoundItemDto: PatchLostFoundItemDto) {
+    const data = await this.readJsonFile();
+    const foundIndex = data.findIndex(item => item.id === Number(id));
+    if (foundIndex === -1) {
+      return null;
+    }
+    const updatedItem = { ...data[foundIndex], ...patchLostFoundItemDto }; // Merge existing item with patch data
     data[foundIndex] = updatedItem;
     await this.writeJsonFile(data);
     return updatedItem;
