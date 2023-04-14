@@ -10,12 +10,12 @@ Content-Type: application/json
 ### DELETE
 DELETE http://localhost:3000/lost-found/5
 ### PUT
-PUT http://localhost:3000/lost-found/1
+PUT http://localhost:3000/lost-found/2
 Content-Type: application/json
 
-{ "id": 1, "item": "anjing dan babi", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "20230412", "dateRetrieved": "20230416" }
+{ "item": "xiaomi 12", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "20230412", "dateRetrieved": "20230416" }
 ### PATCH
 PATCH http://localhost:3000/lost-found/2
-
 Content-Type: application/json
-{ "item": "xiaomi 12" }
+
+{ "item": "babi" }
