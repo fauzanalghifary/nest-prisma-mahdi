@@ -13,9 +13,9 @@ DELETE http://localhost:3000/lost-found/4
 PUT http://localhost:3000/lost-found/1
 Content-Type: application/json
 
-{ "item": "iPhone 11", "characteristic": "warna hitam", "Status": "retrieved", "location": "depan KFC", "dateFound": "13-04-2023", "dateRetrieved": "13-04-2023" }
+{ "item": "iPhone 13 Pro Max", "characteristic": "warna silver", "Status": "lost", "location": "" , "dateFound": "20230412", "dateRetrieved": "20230413" }
 ### PATCH
-PATCH http://localhost:3000/lost-found/3
+PATCH http://localhost:3000/lost-found/2
 
 Content-Type: application/json
-{ "status": "retrieved", "dateFound": "20230411", "dateRetrieved": "20230413" }
+{ "status": "retrieved" }

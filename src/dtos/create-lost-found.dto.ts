@@ -8,7 +8,7 @@ export class CreateLostFoundItemDto {
 
   @IsNotEmpty()
   @IsString()
-  characteristics: string;
+  characteristic: string;
 
   @IsNotEmpty()
   @IsEnum(LostFoundStatus)
