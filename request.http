@@ -1,21 +1,21 @@
 ### GET
-GET http://localhost:3000/lost-found
+GET https://w12-rest-api-mahdiharish.fly.dev/lost-found
 ### GET BY ID
-GET http://localhost:3000/lost-found/1
+GET https://w12-rest-api-mahdiharish.fly.dev/lost-found/1
 ### POST
-POST http://localhost:3000/lost-found
+POST https://w12-rest-api-mahdiharish.fly.dev/lost-found
 Content-Type: application/json
 
 { "item": "anting", "characteristic": "emas", "status": "found", "location": "parkiran", "dateFound": "20230412", "dateRetrieved": "20230413" }
 ### DELETE
-DELETE http://localhost:3000/lost-found/5
+DELETE https://w12-rest-api-mahdiharish.fly.dev/lost-found/5
 ### PUT
-PUT http://localhost:3000/lost-found/2
+PUT https://w12-rest-api-mahdiharish.fly.dev/lost-found/2
 Content-Type: application/json
 
 { "item": "xiaomi 12", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "20230412", "dateRetrieved": "20230416" }
 ### PATCH
-PATCH http://localhost:3000/lost-found/2
+PATCH https://w12-rest-api-mahdiharish.fly.dev/lost-found/2
 Content-Type: application/json
 
 { "item": "babi" }
