@@ -1,82 +1,107 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
-import * as fs from 'fs';
-import { promisify } from 'util';
 
-const readFileAsync = promisify(fs.readFile);
-const writeFileAsync = promisify(fs.writeFile);
+import { PrismaService } from './prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class LostFoundRepository {
+  constructor(private prisma: PrismaService) {}
+
   private readonly jsonFilePath = 'lost-found.json';
 
   async findAll() {
-    const data = await this.readJsonFile();
-    return data;
+    return await this.prisma.lostFound.findMany();
   }
 
   async findOne(id: number) {
-    const data = await this.readJsonFile();
-    const lostFoundItem = data.find(item => item.id === Number(id));
-    console.log(data, lostFoundItem)
+    const theItem = await this.prisma.lostFound.findUnique({
+      where: { id: +id },
+    });
+
+    if (!theItem) {
+      throw new NotFoundException(`Item with ID ${id} does not exist`);
+    }
+
+    return theItem;
+  }
+
+  async save(data: Prisma.LostFoundCreateInput) {
+    let { dateFound, dateRetrieved } = data;
+
+    dateFound = new Date(dateFound);
+    dateRetrieved = new Date(dateRetrieved);
+
+    const lostFoundItem = await this.prisma.lostFound.create({
+      data: {
+        ...data,
+        dateFound,
+        dateRetrieved,
+      },
+    });
+
     return lostFoundItem;
   }
 
-  async save(createLostFoundItemDto: CreateLostFoundItemDto) {
-    const data = await this.readJsonFile();
-    const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
-    const newItem = { id: newId, ...createLostFoundItemDto };
-    data.push(newItem);
-    await this.writeJsonFile(data);
-    return newItem;
-  }
-
   async update(id: number, createLostFoundItemDto: CreateLostFoundItemDto) {
-    const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id === Number(id));
-    if (foundIndex === -1) {
-      return null;
+    let { dateFound, dateRetrieved } = createLostFoundItemDto;
+
+    dateFound = new Date(dateFound);
+    dateRetrieved = new Date(dateRetrieved);
+    const theItem = await this.prisma.lostFound.findUnique({
+      where: { id: +id },
+    });
+
+    if (!theItem) {
+      throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
-    const updatedItem = { id: Number(id), ...createLostFoundItemDto };
-    data[foundIndex] = updatedItem;
-    await this.writeJsonFile(data);
-    return updatedItem;
+
+    return await this.prisma.lostFound.update({
+      where: { id: +id },
+      data: {
+        ...createLostFoundItemDto,
+        dateFound,
+        dateRetrieved,
+      },
+    });
   }
 
   async patch(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
-    const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id === Number(id));
-    if (foundIndex === -1) {
-      return null;
+    let { dateFound, dateRetrieved } = updateLostFoundItemDto;
+
+    if (dateFound) dateFound = new Date(dateFound);
+    if (dateRetrieved) dateRetrieved = new Date(dateRetrieved);
+
+    const theItem = await this.prisma.lostFound.findUnique({
+      where: { id: +id },
+    });
+
+    if (!theItem) {
+      throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
-    const updatedItem = { ...data[foundIndex], ...updateLostFoundItemDto };
-    console.log(updateLostFoundItemDto)
-    console.log(data[foundIndex])
-    data[foundIndex] = updatedItem;
-    await this.writeJsonFile(data);
-    return updatedItem;
+
+    return await this.prisma.lostFound.update({
+      where: { id: +id },
+      data: {
+        ...updateLostFoundItemDto,
+        dateFound,
+        dateRetrieved,
+      },
+    });
   }
 
   async delete(id: number) {
-    const data = await this.readJsonFile();
-    const foundIndex = data.findIndex(item => item.id === Number(id));
-    if (foundIndex === -1) {
-      return null;
+    const theItem = await this.prisma.lostFound.findUnique({
+      where: { id: +id },
+    });
+
+    if (!theItem) {
+      throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
-    const deletedItem = data.splice(foundIndex, 1)[0];
-    await this.writeJsonFile(data);
-    return deletedItem;
+
+    return await this.prisma.lostFound.delete({
+      where: { id: +id },
+    });
   }
-
-  private async readJsonFile() {
-    const fileData = await readFileAsync(this.jsonFilePath, 'utf-8');
-    return JSON.parse(fileData);
-  }
-
-private async writeJsonFile(data: any) {
-  const jsonStr = JSON.stringify(data, null, 2);
-  await writeFileAsync(this.jsonFilePath, jsonStr, 'utf-8');
-}
-
 }

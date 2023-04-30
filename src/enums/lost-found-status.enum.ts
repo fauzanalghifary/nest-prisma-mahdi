@@ -1,5 +1,5 @@
 export enum LostFoundStatus {
-    LOST = 'lost',
-    FOUND = 'found',
-    RETRIEVED = 'retrieved',
+  LOST = 'lost',
+  FOUND = 'found',
+  RETRIEVED = 'retrieved',
 }

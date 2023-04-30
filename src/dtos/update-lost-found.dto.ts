@@ -1,4 +1,4 @@
-import { IsOptional, IsEnum, IsDateString, IsString, } from 'class-validator';
+import { IsOptional, IsEnum, IsDateString, IsString } from 'class-validator';
 import { LostFoundStatus } from 'src/enums/lost-found-status.enum';
 
 export class UpdateLostFoundItemDto {

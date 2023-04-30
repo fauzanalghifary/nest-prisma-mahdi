@@ -16,14 +16,20 @@ export class LostFoundService {
   }
 
   async createLostFoundItem(createLostFoundItemDto: CreateLostFoundItemDto) {
-    return this.lostFoundRepository.save(createLostFoundItemDto)
+    return this.lostFoundRepository.save(createLostFoundItemDto);
   }
 
-    async updateLostFoundItem(id: number, createLostFoundItemDto: CreateLostFoundItemDto) {
+  async updateLostFoundItem(
+    id: number,
+    createLostFoundItemDto: CreateLostFoundItemDto,
+  ) {
     return this.lostFoundRepository.update(id, createLostFoundItemDto);
   }
 
-    async patchLostFoundItem(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
+  async patchLostFoundItem(
+    id: number,
+    updateLostFoundItemDto: UpdateLostFoundItemDto,
+  ) {
     return this.lostFoundRepository.patch(id, updateLostFoundItemDto);
   }
 
