@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 
-import { PrismaService } from './prisma.service';
+import { PrismaService } from '../prisma.service';
 import { Prisma } from '@prisma/client';
 
 @Injectable()
@@ -28,6 +28,9 @@ export class LostFoundRepository {
   async findOne(id: number) {
     const theItem = await this.prisma.lostFound.findUnique({
       where: { id: +id },
+      include: {
+        User: true,
+      },
     });
 
     if (!theItem) {

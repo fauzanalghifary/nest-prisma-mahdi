@@ -1,5 +1,5 @@
 import { IsOptional, IsEnum, IsDateString, IsString } from 'class-validator';
-import { LostFoundStatus } from 'src/enums/lost-found-status.enum';
+import { LostFoundStatus } from 'src/lost-found/enums/lost-found-status.enum';
 
 export class UpdateLostFoundItemDto {
   @IsOptional()
