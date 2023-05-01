@@ -8,6 +8,7 @@ import {
   Param,
   NotFoundException,
   Patch,
+  Query,
 } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
@@ -18,32 +19,20 @@ export class LostFoundController {
   constructor(private readonly lostFoundService: LostFoundService) {}
 
   @Get()
-  async getAllLostFoundItems() {
-    try {
-      return this.lostFoundService.getAllLostFoundItems();
-    } catch (error) {
-      throw new NotFoundException('Failed to show data');
-    }
+  async getAllLostFoundItems(@Query('q') q: string) {
+    return this.lostFoundService.getAllLostFoundItems(q);
   }
 
   @Get(':id')
   async getLostFoundItemById(@Param('id') id: number) {
-    try {
-      return this.lostFoundService.getLostFoundItemById(id);
-    } catch (error) {
-      throw new NotFoundException('Failed to show data');
-    }
+    return this.lostFoundService.getLostFoundItemById(id);
   }
 
   @Post()
   async createLostFoundItem(
     @Body() createLostFoundItemDto: CreateLostFoundItemDto,
   ) {
-    try {
-      return this.lostFoundService.createLostFoundItem(createLostFoundItemDto);
-    } catch (error) {
-      throw new NotFoundException('Failed to add data');
-    }
+    return this.lostFoundService.createLostFoundItem(createLostFoundItemDto);
   }
 
   @Put(':id')
@@ -51,14 +40,10 @@ export class LostFoundController {
     @Param('id') id: number,
     @Body() createLostFoundItemDto: CreateLostFoundItemDto,
   ) {
-    try {
-      return this.lostFoundService.updateLostFoundItem(
-        id,
-        createLostFoundItemDto,
-      );
-    } catch (error) {
-      throw new NotFoundException('Failed to update data');
-    }
+    return this.lostFoundService.updateLostFoundItem(
+      id,
+      createLostFoundItemDto,
+    );
   }
 
   @Patch(':id')
@@ -66,23 +51,11 @@ export class LostFoundController {
     @Param('id') id: number,
     @Body() updateLostFoundItemDto: UpdateLostFoundItemDto,
   ) {
-    try {
-      console.log(updateLostFoundItemDto);
-      return this.lostFoundService.patchLostFoundItem(
-        id,
-        updateLostFoundItemDto,
-      );
-    } catch (error) {
-      throw new NotFoundException('Failed to patch data');
-    }
+    return this.lostFoundService.patchLostFoundItem(id, updateLostFoundItemDto);
   }
 
   @Delete(':id')
   async deleteLostFoundItem(@Param('id') id: number) {
-    try {
-      return this.lostFoundService.deleteLostFoundItem(id);
-    } catch (error) {
-      throw new NotFoundException('Failed to remove data');
-    }
+    return this.lostFoundService.deleteLostFoundItem(id);
   }
 }

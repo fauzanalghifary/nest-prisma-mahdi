@@ -7,8 +7,8 @@ import { LostFoundRepository } from './lost-found.repository';
 export class LostFoundService {
   constructor(private readonly lostFoundRepository: LostFoundRepository) {}
 
-  async getAllLostFoundItems() {
-    return this.lostFoundRepository.findAll();
+  async getAllLostFoundItems(q: string) {
+    return this.lostFoundRepository.findAll(q);
   }
 
   async getLostFoundItemById(id: number) {

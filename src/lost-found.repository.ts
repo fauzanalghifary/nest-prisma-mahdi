@@ -9,10 +9,20 @@ import { Prisma } from '@prisma/client';
 export class LostFoundRepository {
   constructor(private prisma: PrismaService) {}
 
-  private readonly jsonFilePath = 'lost-found.json';
+  async findAll(q: string) {
+    if (!q) {
+      return await this.prisma.lostFound.findMany();
+    }
 
-  async findAll() {
-    return await this.prisma.lostFound.findMany();
+    return await this.prisma.lostFound.findMany({
+      where: {
+        OR: [
+          { item: { contains: q } },
+          { characteristic: { contains: q } },
+          { location: { contains: q } },
+        ],
+      },
+    });
   }
 
   async findOne(id: number) {

@@ -1,5 +1,5 @@
 ### GET
-GET http://localhost:3000/lost-found
+GET http://localhost:3000/lost-found?q=xiaomi
 
 
 ### GET BY ID
