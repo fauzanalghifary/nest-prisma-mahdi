@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsEnum, IsDateString, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsEnum,
+  IsDateString,
+  IsString,
+  IsNumber,
+} from 'class-validator';
 import { LostFoundStatus } from 'src/lost-found/enums/lost-found-status.enum';
 
 export class CreateLostFoundItemDto {
@@ -25,4 +31,8 @@ export class CreateLostFoundItemDto {
   @IsNotEmpty()
   @IsDateString()
   dateRetrieved: Date;
+
+  @IsNotEmpty()
+  @IsNumber()
+  userId: number;
 }

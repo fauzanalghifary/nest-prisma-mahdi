@@ -1,16 +1,16 @@
 ### GET
-GET http://localhost:3000/lost-found?q=xiaomi
+GET http://localhost:3000/lost-found
 
 
 ### GET BY ID
-GET http://localhost:3000/lost-found/1
+GET http://localhost:3000/lost-found/2
 
 
 ### POST
 POST http://localhost:3000/lost-found
 Content-Type: application/json
 
-{ "item": "gelang", "characteristic": "emas", "status": "lost", "location": "mesjid", "dateFound": "2023-04-12", "dateRetrieved": "2023-04-13", "userId": 4 }
+{ "item": "gelang", "characteristic": "emas", "status": "lost", "location": "mesjid", "dateFound": "2023-04-12", "dateRetrieved": "2023-04-13" }
 
 
 ### DELETE
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 
 ### PATCH
-PATCH http://localhost:3000/lost-found/1
+PATCH http://localhost:3000/lost-found/2
 Content-Type: application/json
 
 { "item": "baba" }
@@ -38,7 +38,7 @@ Content-Type: application/json
 GET http://localhost:3000/users
 
 ### GET BY ID
-GET http://localhost:3000/users/5
+GET http://localhost:3000/users/41
 
 ### POST
 POST http://localhost:3000/users

@@ -41,20 +41,9 @@ export class LostFoundRepository {
   }
 
   async save(data: Prisma.LostFoundCreateInput) {
-    let { dateFound, dateRetrieved } = data;
-
-    dateFound = new Date(dateFound);
-    dateRetrieved = new Date(dateRetrieved);
-
-    const lostFoundItem = await this.prisma.lostFound.create({
-      data: {
-        ...data,
-        dateFound,
-        dateRetrieved,
-      },
+    return await this.prisma.lostFound.create({
+      data: data,
     });
-
-    return lostFoundItem;
   }
 
   async update(id: number, createLostFoundItemDto: CreateLostFoundItemDto) {
@@ -81,6 +70,8 @@ export class LostFoundRepository {
   }
 
   async patch(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
+    console.log(updateLostFoundItemDto);
+
     let { dateFound, dateRetrieved } = updateLostFoundItemDto;
 
     if (dateFound) dateFound = new Date(dateFound);
