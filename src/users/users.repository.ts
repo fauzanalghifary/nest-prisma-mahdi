@@ -10,20 +10,17 @@ export class UsersRepository {
   constructor(private prisma: PrismaService) {}
 
   async create(createUserDto: Prisma.UserCreateInput) {
-    return await this.prisma.user.create({
+    return this.prisma.user.create({
       data: {
         ...createUserDto,
-      },
-      include: {
-        lostFound: true,
       },
     });
   }
 
   async findAll() {
-    return await this.prisma.user.findMany({
+    return this.prisma.user.findMany({
       include: {
-        lostFound: true,
+        LostFound: true,
       },
     });
   }
@@ -32,12 +29,27 @@ export class UsersRepository {
     const theUser = await this.prisma.user.findUnique({
       where: { id: +id },
       include: {
-        lostFound: true,
+        LostFound: true,
       },
     });
 
     if (!theUser) {
       throw new NotFoundException(`User with ID ${id} does not exist`);
+    }
+
+    return theUser;
+  }
+
+  async findOneByEmail(email: string) {
+    const theUser = await this.prisma.user.findUnique({
+      where: { email: email },
+      include: {
+        LostFound: true,
+      },
+    });
+
+    if (!theUser) {
+      throw new NotFoundException(`User with email ${email} does not exist`);
     }
 
     return theUser;
@@ -52,7 +64,7 @@ export class UsersRepository {
       throw new NotFoundException(`User with ID ${id} does not exist`);
     }
 
-    return await this.prisma.user.update({
+    return this.prisma.user.update({
       where: { id: +id },
       data: {
         ...updateUserDto,
@@ -69,7 +81,7 @@ export class UsersRepository {
       throw new NotFoundException(`User with ID ${id} does not exist`);
     }
 
-    return await this.prisma.user.delete({
+    return this.prisma.user.delete({
       where: { id: +id },
     });
   }

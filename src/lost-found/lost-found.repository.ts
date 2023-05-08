@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UseGuards } from '@nestjs/common';
 import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 
@@ -11,10 +11,10 @@ export class LostFoundRepository {
 
   async findAll(q: string) {
     if (!q) {
-      return await this.prisma.lostFound.findMany();
+      return this.prisma.lostFound.findMany();
     }
 
-    return await this.prisma.lostFound.findMany({
+    return this.prisma.lostFound.findMany({
       where: {
         OR: [
           { item: { contains: q } },
@@ -41,7 +41,7 @@ export class LostFoundRepository {
   }
 
   async save(data: Prisma.LostFoundCreateInput) {
-    return await this.prisma.lostFound.create({
+    return this.prisma.lostFound.create({
       data: data,
     });
   }
@@ -59,7 +59,7 @@ export class LostFoundRepository {
       throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
 
-    return await this.prisma.lostFound.update({
+    return this.prisma.lostFound.update({
       where: { id: +id },
       data: {
         ...createLostFoundItemDto,
@@ -70,8 +70,6 @@ export class LostFoundRepository {
   }
 
   async patch(id: number, updateLostFoundItemDto: UpdateLostFoundItemDto) {
-    console.log(updateLostFoundItemDto);
-
     let { dateFound, dateRetrieved } = updateLostFoundItemDto;
 
     if (dateFound) dateFound = new Date(dateFound);
@@ -85,7 +83,7 @@ export class LostFoundRepository {
       throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
 
-    return await this.prisma.lostFound.update({
+    return this.prisma.lostFound.update({
       where: { id: +id },
       data: {
         ...updateLostFoundItemDto,
@@ -104,7 +102,7 @@ export class LostFoundRepository {
       throw new NotFoundException(`Item with ID ${id} does not exist`);
     }
 
-    return await this.prisma.lostFound.delete({
+    return this.prisma.lostFound.delete({
       where: { id: +id },
     });
   }

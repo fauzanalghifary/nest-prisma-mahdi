@@ -1,16 +1,25 @@
 ### GET
 GET http://localhost:3000/lost-found
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhY2FAZW1haWwuY29tIiwic3ViIjoxLCJpYXQiOjE2ODM1NTc1NzQsImV4cCI6MTY4MzY0Mzk3NH0.gAmDmCXSkErV52ejOgUceXOkDBl3KhxsiEM4BgMXuzY
 
 
 ### GET BY ID
 GET http://localhost:3000/lost-found/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhY2FAZW1haWwuY29tIiwic3ViIjoxLCJpYXQiOjE2ODM1NTc1NzQsImV4cCI6MTY4MzY0Mzk3NH0.gAmDmCXSkErV52ejOgUceXOkDBl3KhxsiEM4BgMXuzY
 
 
 ### POST
 POST http://localhost:3000/lost-found
 Content-Type: application/json
 
-{ "item": "gelang", "characteristic": "emas", "status": "lost", "location": "mesjid", "dateFound": "2023-04-12", "dateRetrieved": "2023-04-13" }
+{
+  "item": "gelang",
+  "characteristic": "emas",
+  "status": "lost",
+  "location": "mesjid",
+  "dateFound": "2023-04-12",
+  "dateRetrieved": "2023-04-13"
+}
 
 
 ### DELETE
@@ -21,14 +30,23 @@ DELETE http://localhost:3000/lost-found/2
 PUT http://localhost:3000/lost-found/1
 Content-Type: application/json
 
-{ "item": "xiaomi 12", "characteristic": "warna silver", "status": "found", "location": "depan masjid" , "dateFound": "2023-04-12", "dateRetrieved": "2023-04-16" }
+{
+  "item": "xiaomi 12",
+  "characteristic": "warna silver",
+  "status": "found",
+  "location": "depan masjid",
+  "dateFound": "2023-04-12",
+  "dateRetrieved": "2023-04-16"
+}
 
 
 ### PATCH
 PATCH http://localhost:3000/lost-found/2
 Content-Type: application/json
 
-{ "item": "baba" }
+{
+  "item": "baba"
+}
 
 
 ##### USER
@@ -38,13 +56,29 @@ Content-Type: application/json
 GET http://localhost:3000/users
 
 ### GET BY ID
-GET http://localhost:3000/users/41
+GET http://localhost:3000/users/1
 
 ### POST
 POST http://localhost:3000/users
 Content-Type: application/json
 
-{ "email": "caca@email.com" }
+{
+  "email": "caca@email.com"
+}
 
 ### DELETE
 DELETE http://localhost:3000/users/1
+
+
+## AUTH
+
+### SIGN IN
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "caca@email.com",
+  "password": "12345"
+}
+

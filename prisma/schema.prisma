@@ -31,5 +31,12 @@ enum Status {
 model User {
   id        Int         @id @default(autoincrement())
   email     String      @unique
-  lostFound LostFound[]
+  password  String      @default("12345")
+  role      Role?       @default(customer)
+  LostFound LostFound[]
+}
+
+enum Role {
+  admin
+  customer
 }
