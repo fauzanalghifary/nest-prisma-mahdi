@@ -1,19 +1,18 @@
-### GET
+
+######## LOST AND FOUND API ===================================================================================
+### GET (PUBLIC API)
 GET http://localhost:3000/lost-found
-Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhY2FAZW1haWwuY29tIiwic3ViIjoxLCJpYXQiOjE2ODM1NTc1NzQsImV4cCI6MTY4MzY0Mzk3NH0.gAmDmCXSkErV52ejOgUceXOkDBl3KhxsiEM4BgMXuzY
 
-
-### GET BY ID
+### GET BY ID (NEED AUTHENTICATION)
 GET http://localhost:3000/lost-found/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhY2FAZW1haWwuY29tIiwic3ViIjoxLCJpYXQiOjE2ODM1NTc1NzQsImV4cCI6MTY4MzY0Mzk3NH0.gAmDmCXSkErV52ejOgUceXOkDBl3KhxsiEM4BgMXuzY
 
-
-### POST
+### POST (NEED AUTHENTICATION AND AUTHORIZATION)
 POST http://localhost:3000/lost-found
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MDg0NDQsImV4cCI6MTY4MzY5NDg0NH0.vmG5I2WH25oKiS9QUs2IgJ2PkMhO55IfyNOajeVX3Jk
 Content-Type: application/json
 
 {
-  "item": "gelang",
+  "item": "gelang 2",
   "characteristic": "emas",
   "status": "lost",
   "location": "mesjid",
@@ -21,17 +20,13 @@ Content-Type: application/json
   "dateRetrieved": "2023-04-13"
 }
 
-
-### DELETE
-DELETE http://localhost:3000/lost-found/2
-
-
-### PUT
-PUT http://localhost:3000/lost-found/1
+### PUT (NEED AUTHENTICATION AND AUTHORIZATION)
+PUT http://localhost:3000/lost-found/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInN1YiI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzNjA5ODkwLCJleHAiOjE2ODM2OTYyOTB9.o_R8qSwZNboI12wOCD8Zf01kwlxfTwUAH-0s4pJNvOc
 Content-Type: application/json
 
 {
-  "item": "xiaomi 12",
+  "item": "xiaomi admin",
   "characteristic": "warna silver",
   "status": "found",
   "location": "depan masjid",
@@ -40,7 +35,7 @@ Content-Type: application/json
 }
 
 
-### PATCH
+### PATCH (NEED AUTHENTICATION AND AUTHORIZATION)
 PATCH http://localhost:3000/lost-found/2
 Content-Type: application/json
 
@@ -48,37 +43,60 @@ Content-Type: application/json
   "item": "baba"
 }
 
+### DELETE (NEED AUTHENTICATION AND AUTHORIZATION)
+DELETE http://localhost:3000/lost-found/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MDk5ODksImV4cCI6MTY4MzY5NjM4OX0.-jaI2-sARebW2Q6Gs4f7fGCe8-VAkoxSEYSYNjW2orQ
 
-##### USER
+######## USERS API ===================================================================================
 
-
-### GET
+### GET (NEED AUTHENTICATION)
 GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTAxNTMsImV4cCI6MTY4MzY5NjU1M30.rZ6bSjH9Sd8KvhtwAs_u1IPr63VzSn6oZIqTRkJ8fWU
 
-### GET BY ID
-GET http://localhost:3000/users/1
+### GET BY ID (NEED AUTHENTICATION)
+GET http://localhost:3000/users/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTAxNTMsImV4cCI6MTY4MzY5NjU1M30.rZ6bSjH9Sd8KvhtwAs_u1IPr63VzSn6oZIqTRkJ8fWU
 
-### POST
-POST http://localhost:3000/users
+#### POST
+#POST http://localhost:3000/users
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
+#Content-Type: application/json
+#
+#
+
+### PATCH
+
+PATCH http://localhost:3000/users/11
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
 Content-Type: application/json
 
 {
-  "email": "caca@email.com"
+  "email": "newgaga@email.com"
 }
 
 ### DELETE
-DELETE http://localhost:3000/users/1
+DELETE http://localhost:3000/users/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
 
-
-## AUTH
+######## AUTH API ===================================================================================
 
 ### SIGN IN
 
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "caca@email.com",
+  "email": "gaga@email.com",
   "password": "12345"
 }
 
+
+### REGISTER
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "email": "haha@email.com",
+  "password": "12345"
+}

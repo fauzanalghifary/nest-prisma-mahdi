@@ -12,16 +12,17 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
-import { AuthGuard } from '../auth/auth.guard';
+import { AuthGuard, RoleGuard } from '../auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
+  // @Post()
+  // @UseGuards(AuthGuard)
+  // create(@Body() createUserDto: CreateUserDto) {
+  //   return this.usersService.create(createUserDto);
+  // }
 
   @Get()
   @UseGuards(AuthGuard)
@@ -37,14 +38,16 @@ export class UsersController {
   }
 
   @Patch(':id')
+  @UseGuards(RoleGuard)
   @UseGuards(AuthGuard)
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return new UserEntity(await this.usersService.update(+id, updateUserDto));
   }
 
   @Delete(':id')
+  @UseGuards(RoleGuard)
   @UseGuards(AuthGuard)
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return new UserEntity(await this.usersService.remove(+id));
   }
 }

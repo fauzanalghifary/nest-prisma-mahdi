@@ -15,8 +15,7 @@ import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 import { LostFoundService } from './lost-found.service';
 import { LostFoundEntity } from './entities/lost-found.entity';
-import { AuthGuard } from '../auth/auth.guard';
-import { RoleGuard } from '../auth/role.guard';
+import { AuthGuard, RoleGuard } from '../auth/auth.guard';
 
 @Controller('lost-found')
 export class LostFoundController {
@@ -29,8 +28,6 @@ export class LostFoundController {
   }
 
   @Get(':id')
-  @UseGuards(AuthGuard)
-  @UseGuards(RoleGuard)
   async getLostFoundItemById(@Param('id') id: number, @Request() req) {
     // console.log(req.user, 'ini di lost-found controller');
     return new LostFoundEntity(
@@ -42,11 +39,17 @@ export class LostFoundController {
   @UseGuards(AuthGuard)
   async createLostFoundItem(
     @Body() createLostFoundItemDto: CreateLostFoundItemDto,
+    @Request() req,
   ) {
-    return this.lostFoundService.createLostFoundItem(createLostFoundItemDto);
+    const userId = req.user.sub;
+    return this.lostFoundService.createLostFoundItem(
+      createLostFoundItemDto,
+      userId,
+    );
   }
 
   @Put(':id')
+  @UseGuards(RoleGuard)
   @UseGuards(AuthGuard)
   async updateLostFoundItem(
     @Param('id') id: number,
@@ -59,6 +62,7 @@ export class LostFoundController {
   }
 
   @Patch(':id')
+  @UseGuards(RoleGuard)
   @UseGuards(AuthGuard)
   async patchLostFoundItem(
     @Param('id') id: number,
@@ -68,6 +72,7 @@ export class LostFoundController {
   }
 
   @Delete(':id')
+  @UseGuards(RoleGuard)
   @UseGuards(AuthGuard)
   async deleteLostFoundItem(@Param('id') id: number) {
     return this.lostFoundService.deleteLostFoundItem(id);

@@ -10,6 +10,7 @@ export class UsersRepository {
   constructor(private prisma: PrismaService) {}
 
   async create(createUserDto: Prisma.UserCreateInput) {
+    console.log(createUserDto);
     return this.prisma.user.create({
       data: {
         ...createUserDto,

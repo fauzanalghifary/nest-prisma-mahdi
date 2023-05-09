@@ -31,8 +31,4 @@ export class CreateLostFoundItemDto {
   @IsNotEmpty()
   @IsDateString()
   dateRetrieved: Date;
-
-  @IsNotEmpty()
-  @IsNumber()
-  userId: number;
 }

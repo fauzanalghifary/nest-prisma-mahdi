@@ -3,7 +3,6 @@ import { CreateLostFoundItemDto } from './dtos/create-lost-found.dto';
 import { UpdateLostFoundItemDto } from './dtos/update-lost-found.dto';
 
 import { PrismaService } from '../prisma.service';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class LostFoundRepository {
@@ -40,9 +39,18 @@ export class LostFoundRepository {
     return theItem;
   }
 
-  async save(data: Prisma.LostFoundCreateInput) {
+  async save(data: CreateLostFoundItemDto, userId: number) {
+    let { dateFound, dateRetrieved } = data;
+    dateFound = new Date(dateFound);
+    dateRetrieved = new Date(dateRetrieved);
+
     return this.prisma.lostFound.create({
-      data: data,
+      data: {
+        ...data,
+        dateFound,
+        dateRetrieved,
+        userId,
+      },
     });
   }
 

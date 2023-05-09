@@ -15,8 +15,11 @@ export class LostFoundService {
     return this.lostFoundRepository.findOne(id);
   }
 
-  async createLostFoundItem(createLostFoundItemDto: CreateLostFoundItemDto) {
-    return this.lostFoundRepository.save(createLostFoundItemDto);
+  async createLostFoundItem(
+    createLostFoundItemDto: CreateLostFoundItemDto,
+    userId: number,
+  ) {
+    return this.lostFoundRepository.save(createLostFoundItemDto, userId);
   }
 
   async updateLostFoundItem(
