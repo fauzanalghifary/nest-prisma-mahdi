@@ -8,7 +8,7 @@ GET http://localhost:3000/lost-found/2
 
 ### POST (NEED AUTHENTICATION)
 POST http://localhost:3000/lost-found
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MDg0NDQsImV4cCI6MTY4MzY5NDg0NH0.vmG5I2WH25oKiS9QUs2IgJ2PkMhO55IfyNOajeVX3Jk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGEyQGVtYWlsLmNvbSIsInN1YiI6MTMsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY4MzY0MTI0NiwiZXhwIjoxNjgzNzI3NjQ2fQ.CPsRZdBo1tDfh_mRGYvFoSMyUPBTMIzvowl57PKu4L4
 Content-Type: application/json
 
 {
@@ -19,21 +19,6 @@ Content-Type: application/json
   "dateFound": "2023-04-12",
   "dateRetrieved": "2023-04-13"
 }
-
-#### PUT (NEED AUTHENTICATION AND AUTHORIZATION)
-#PUT http://localhost:3000/lost-found/2
-#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInN1YiI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzNjA5ODkwLCJleHAiOjE2ODM2OTYyOTB9.o_R8qSwZNboI12wOCD8Zf01kwlxfTwUAH-0s4pJNvOc
-#Content-Type: application/json
-#
-#{
-#  "item": "xiaomi admin",
-#  "characteristic": "warna silver",
-#  "status": "found",
-#  "location": "depan masjid",
-#  "dateFound": "2023-04-12",
-#  "dateRetrieved": "2023-04-16"
-#}
-
 
 ### PATCH (NEED AUTHENTICATION AND AUTHORIZATION)
 PATCH http://localhost:3000/lost-found/2
@@ -57,13 +42,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZ
 GET http://localhost:3000/users/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTAxNTMsImV4cCI6MTY4MzY5NjU1M30.rZ6bSjH9Sd8KvhtwAs_u1IPr63VzSn6oZIqTRkJ8fWU
 
-#### POST
-#POST http://localhost:3000/users
-#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
-#Content-Type: application/json
-#
-#
-
 ### PATCH (NEED AUTHENTICATION AND AUTHORIZATION)
 PATCH http://localhost:3000/users/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
@@ -85,10 +63,9 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "gaga@email.com",
+  "email": "haha2@email.com",
   "password": "12345"
 }
-
 
 ### REGISTER (PUBLIC API)
 
@@ -96,6 +73,6 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "email": "haha@email.com",
+  "email": "haha2@email.com",
   "password": "12345"
 }
