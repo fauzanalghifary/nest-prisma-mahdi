@@ -6,7 +6,6 @@ import {
 import { UsersRepository } from '../users/users.repository';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { catchError } from 'rxjs';
 
 @Injectable()
 export class AuthService {

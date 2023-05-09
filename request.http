@@ -3,10 +3,10 @@
 ### GET (PUBLIC API)
 GET http://localhost:3000/lost-found
 
-### GET BY ID (NEED AUTHENTICATION)
+### GET BY ID (PUBLIC API)
 GET http://localhost:3000/lost-found/2
 
-### POST (NEED AUTHENTICATION AND AUTHORIZATION)
+### POST (NEED AUTHENTICATION)
 POST http://localhost:3000/lost-found
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZW1haWwuY29tIiwic3ViIjoyLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MDg0NDQsImV4cCI6MTY4MzY5NDg0NH0.vmG5I2WH25oKiS9QUs2IgJ2PkMhO55IfyNOajeVX3Jk
 Content-Type: application/json
@@ -20,19 +20,19 @@ Content-Type: application/json
   "dateRetrieved": "2023-04-13"
 }
 
-### PUT (NEED AUTHENTICATION AND AUTHORIZATION)
-PUT http://localhost:3000/lost-found/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInN1YiI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzNjA5ODkwLCJleHAiOjE2ODM2OTYyOTB9.o_R8qSwZNboI12wOCD8Zf01kwlxfTwUAH-0s4pJNvOc
-Content-Type: application/json
-
-{
-  "item": "xiaomi admin",
-  "characteristic": "warna silver",
-  "status": "found",
-  "location": "depan masjid",
-  "dateFound": "2023-04-12",
-  "dateRetrieved": "2023-04-16"
-}
+#### PUT (NEED AUTHENTICATION AND AUTHORIZATION)
+#PUT http://localhost:3000/lost-found/2
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInN1YiI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzNjA5ODkwLCJleHAiOjE2ODM2OTYyOTB9.o_R8qSwZNboI12wOCD8Zf01kwlxfTwUAH-0s4pJNvOc
+#Content-Type: application/json
+#
+#{
+#  "item": "xiaomi admin",
+#  "characteristic": "warna silver",
+#  "status": "found",
+#  "location": "depan masjid",
+#  "dateFound": "2023-04-12",
+#  "dateRetrieved": "2023-04-16"
+#}
 
 
 ### PATCH (NEED AUTHENTICATION AND AUTHORIZATION)
@@ -64,8 +64,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGFAZ
 #
 #
 
-### PATCH
-
+### PATCH (NEED AUTHENTICATION AND AUTHORIZATION)
 PATCH http://localhost:3000/users/11
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
 Content-Type: application/json
@@ -74,13 +73,13 @@ Content-Type: application/json
   "email": "newgaga@email.com"
 }
 
-### DELETE
+### DELETE (NEED AUTHENTICATION AND AUTHORIZATION)
 DELETE http://localhost:3000/users/10
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZ2FAZW1haWwuY29tIiwic3ViIjo0LCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2ODM2MTQyMDcsImV4cCI6MTY4MzcwMDYwN30.yjAuVMHGDDS-ikr3opXY5MqnXI2rTSouiNk8sWcrprw
 
 ######## AUTH API ===================================================================================
 
-### SIGN IN
+### SIGN IN (PUBLIC API)
 
 POST http://localhost:3000/login
 Content-Type: application/json
@@ -91,7 +90,7 @@ Content-Type: application/json
 }
 
 
-### REGISTER
+### REGISTER (PUBLIC API)
 
 POST http://localhost:3000/register
 Content-Type: application/json

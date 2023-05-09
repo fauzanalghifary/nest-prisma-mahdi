@@ -68,9 +68,7 @@ export class RoleGuard implements CanActivate {
     }
 
     if (request.user.role !== 'admin' && !isOwner) {
-      throw new ForbiddenException(
-        'You are not authorized to access this resource',
-      );
+      throw new ForbiddenException('You are not authorized');
     }
     return true;
   }

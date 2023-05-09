@@ -6,7 +6,6 @@ import { JwtModule } from '@nestjs/jwt';
 import * as process from 'process';
 import { UsersRepository } from '../users/users.repository';
 import { PrismaService } from '../prisma.service';
-import { UsersService } from '../users/users.service';
 
 @Module({
   imports: [
