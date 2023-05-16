@@ -1,30 +1,24 @@
-FROM debian:bullseye as builder
+FROM node:14 AS builder
 
-ENV PATH=/usr/local/node/bin:$PATH
-ARG NODE_VERSION=18.15.0
-
-RUN apt-get update; apt install -y curl python-is-python3 pkg-config build-essential && \
-    curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-rm -rf /tmp/node-build-master
-
-RUN mkdir /app
+# Create app directory
 WORKDIR /app
+
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json ./
+COPY prisma ./prisma/
+
+# Install app dependencies
+RUN npm install
 
 COPY . .
 
-RUN npm install && npm run build
+RUN npm run build
 
+FROM node:14
 
-FROM debian:bullseye-slim
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
 
-LABEL fly_launch_runtime="nodejs"
-
-COPY --from=builder /usr/local/node /usr/local/node
-COPY --from=builder /app /app
-
-WORKDIR /app
-ENV NODE_ENV production
-ENV PATH /usr/local/node/bin:$PATH
-
-CMD [ "npm", "run", "start" ]
+EXPOSE 3000
+CMD [ "npm", "run", "start:prod" ]
