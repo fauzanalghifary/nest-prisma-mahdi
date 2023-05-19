@@ -3,13 +3,12 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 import { PrismaService } from '../prisma.service';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UsersRepository {
   constructor(private prisma: PrismaService) {}
 
-  async create(createUserDto: Prisma.UserCreateInput) {
+  async create(createUserDto: CreateUserDto) {
     console.log(createUserDto);
     return this.prisma.user.create({
       data: {
