@@ -1,13 +1,16 @@
-version: '3.8'
+version: '3.9'
 services:
   nest-api:
+    image: asia-southeast2-docker.pkg.dev/numeric-advice-384613/fauzan-nest-dockerize/my-backend-infra
     build:
       context: .
       dockerfile: Dockerfile
     container_name: nest-api
     restart: always
     ports:
-      - "3000:3000"
+      - "80:4000"
+      - "443:4000"
+      - "4000:4000"
     env_file:
       - .env
     depends_on:
@@ -25,4 +28,3 @@ services:
       - postgres:/var/lib/postgresql/data
 volumes:
   postgres:
-    name: nest-prisma-docker-db
