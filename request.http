@@ -1,21 +1,21 @@
 
 ######## LOST AND FOUND API ===================================================================================
 ### GET (PUBLIC API)
-GET http://localhost:3000/items
+GET http://nest.fauzanalghifary.id/items
 
 ### GET BY ID (PUBLIC API)
 GET http://localhost:3000/items/3
 
 ### POST (NEED AUTHENTICATION)
-POST http://localhost:3000/items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhaGEyQGVtYWlsLmNvbSIsInN1YiI6MTMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4NDQ4MjU4MiwiZXhwIjoxNjg0NTY4OTgyfQ.fSA5bG7cEf2PHrU71RP7sXVhanPKEuM7elpPPl6h_hE
+POST http://nest.fauzanalghifary.id/items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInN1YiI6MSwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjg0ODM5ODQ0LCJleHAiOjE2ODQ5MjYyNDR9.SfCHOANHV1CAEPZbEZOEx2rCvCQNDQ7tDZRRZQ_l63A
 Content-Type: application/json
 
 {
-  "item": "gelang 2",
-  "characteristic": "emas",
+  "item": "Kunci",
+  "characteristic": "Kuning",
   "status": "lost",
-  "location": "mesjid",
+  "location": "Mesjid",
   "dateFound": "2023-04-12",
   "dateRetrieved": "2023-04-13"
 }
